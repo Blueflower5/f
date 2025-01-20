@@ -32,7 +32,7 @@ function Form() {
       <select
         id="numberSelect"
         value={quantity}
-        onChange={(e) => setQauntity(e.target.value)}
+        onChange={(e) => setQauntity(Number(e.target.value))}
       >
         {Array.from({ length: 20 }, (_, index) => (
           <option key={index + 1} value={index + 1}>
@@ -44,7 +44,9 @@ function Form() {
         type="text"
         placeholder="Item..."
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
       />
       <button>Add</button>
     </form>
@@ -55,7 +57,7 @@ function PackingList() {
     <div className="list">
       <ul>
         {initialItems.map((item) => (
-          <Items item={item} />
+          <Items item={item} key={item.id} />
         ))}
       </ul>
     </div>
